@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INEMA.VIP | Comunidade Premium de Transformacao com IA</title>
+    <meta
+      name="description"
+      content="Comunidade premium para profissionais e lideres que querem aplicar IA no negocio sem virar tecnico. Acesso a trilhas, grupo ativo e direcionamento pratico." />
+    <meta property="og:title" content="INEMA.VIP | Comunidade Premium de Transformacao com IA" />
+    <meta
+      property="og:description"
+      content="Entre para a comunidade INEMA.VIP e acelere sua evolucao com IA, automacao e estrategia aplicada." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://inema.vip" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap"
+      rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #f6f2ea;
+        --ink: #1d2430;
+        --text: #2b3444;
+        --muted: #5f6775;
+        --line: #e6dac7;
+        --card: #fffdf8;
+        --accent: #bb7a1f;
+        --accent-strong: #8d5911;
+        --accent-soft: #ffe7c4;
+        --teal: #1f5f6c;
+        --teal-soft: #d9eef2;
+        --danger-soft: #ffe8df;
+        --radius-lg: 20px;
+        --radius-md: 14px;
+        --shadow: 0 20px 50px rgba(28, 35, 48, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--text);
+        font-family: "Manrope", sans-serif;
+        background:
+          radial-gradient(circle at 10% 0%, #fff7eb 0%, transparent 40%),
+          radial-gradient(circle at 95% 10%, #e4f4f7 0%, transparent 33%),
+          repeating-linear-gradient(
+            -45deg,
+            rgba(255, 255, 255, 0.22) 0 18px,
+            rgba(246, 242, 234, 0.22) 18px 36px
+          ),
+          var(--bg);
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 2.5rem));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(8px);
+        background: rgba(246, 242, 234, 0.86);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+
+      .topbar-wrap {
+        min-height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+      }
+
+      .brand-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--accent), #e9a43f);
+        box-shadow: 0 0 0 4px rgba(187, 122, 31, 0.2);
+      }
+
+      .badge {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--accent-strong);
+        padding: 0.44rem 0.65rem;
+        border-radius: 999px;
+        background: var(--accent-soft);
+      }
+
+      .btn {
+        border: 0;
+        border-radius: 999px;
+        padding: 0.92rem 1.3rem;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-primary {
+        color: #fff;
+        background: linear-gradient(135deg, var(--accent-strong), var(--accent));
+        box-shadow: 0 14px 28px rgba(141, 89, 17, 0.3);
+      }
+
+      .btn-ghost {
+        color: var(--teal);
+        border: 1px solid rgba(31, 95, 108, 0.3);
+        background: rgba(255, 255, 255, 0.55);
+      }
+
+      .hero {
+        padding: 4.4rem 0 2.8rem;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 1.4rem;
+        align-items: stretch;
+      }
+
+      .hero-copy,
+      .hero-panel {
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: var(--card);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-copy {
+        padding: 2.4rem 2.2rem;
+      }
+
+      .kicker {
+        margin: 0;
+        color: var(--teal);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        font-size: 0.74rem;
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: var(--ink);
+        margin: 0;
+        line-height: 1.15;
+      }
+
+      h1 {
+        margin-top: 0.8rem;
+        font-family: "Fraunces", serif;
+        font-size: clamp(2rem, 3.2vw, 3.25rem);
+        letter-spacing: -0.03em;
+      }
+
+      .hero p {
+        margin: 1rem 0 0;
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      .hero-actions {
+        margin-top: 1.6rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+      }
+
+      .mini-proof {
+        margin-top: 1.4rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+      }
+
+      .mini-proof span {
+        padding: 0.45rem 0.7rem;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        color: var(--ink);
+        font-size: 0.84rem;
+        font-weight: 600;
+        background: #fff;
+      }
+
+      .hero-panel {
+        padding: 1.8rem;
+        background:
+          linear-gradient(165deg, #fffdf8 0%, #fffaef 55%, #f8f0de 100%);
+      }
+
+      .panel-title {
+        font-size: 1.05rem;
+        font-weight: 800;
+      }
+
+      .panel-list {
+        margin: 1rem 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 0.85rem;
+      }
+
+      .panel-list li {
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.8);
+        padding: 0.85rem;
+        font-size: 0.95rem;
+      }
+
+      .section {
+        padding: 4rem 0;
+      }
+
+      .section-head {
+        max-width: 760px;
+        margin-bottom: 1.6rem;
+      }
+
+      .section-head p {
+        margin-top: 0.7rem;
+        color: var(--muted);
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        background: var(--card);
+        padding: 1.1rem;
+      }
+
+      .pain {
+        background: linear-gradient(160deg, #fff, var(--danger-soft));
+      }
+
+      .gain {
+        background: linear-gradient(160deg, #fff, var(--teal-soft));
+      }
+
+      .icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        display: inline-grid;
+        place-items: center;
+        margin-bottom: 0.65rem;
+        font-weight: 900;
+        font-size: 0.95rem;
+      }
+
+      .icon.p {
+        background: rgba(202, 88, 33, 0.15);
+        color: #9d4118;
+      }
+
+      .icon.g {
+        background: rgba(27, 117, 134, 0.16);
+        color: #104c58;
+      }
+
+      .card h3 {
+        font-size: 1.03rem;
+        margin-bottom: 0.48rem;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .roadmap {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.8rem;
+      }
+
+      .step {
+        border: 1px solid var(--line);
+        background: var(--card);
+        border-radius: 16px;
+        padding: 1rem;
+      }
+
+      .step-num {
+        display: inline-block;
+        font-size: 0.78rem;
+        font-weight: 800;
+        color: var(--teal);
+        padding: 0.28rem 0.52rem;
+        border-radius: 999px;
+        background: var(--teal-soft);
+      }
+
+      .step h3 {
+        margin-top: 0.72rem;
+        font-size: 1rem;
+      }
+
+      .step p {
+        margin: 0.45rem 0 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .pricing {
+        padding: 4rem 0;
+      }
+
+      .price-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .price-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: var(--card);
+        padding: 1.4rem;
+        box-shadow: var(--shadow);
+        position: relative;
+      }
+
+      .price-card.reco {
+        border: 1px solid rgba(187, 122, 31, 0.4);
+        background: linear-gradient(165deg, #fff, #fff4e3);
+      }
+
+      .tag {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        padding: 0.28rem 0.6rem;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 800;
+        color: #6f430b;
+        background: #ffdca8;
+      }
+
+      .price {
+        margin-top: 0.65rem;
+        display: flex;
+        align-items: baseline;
+        gap: 0.28rem;
+      }
+
+      .price strong {
+        font-size: 2.1rem;
+        line-height: 1;
+        color: var(--ink);
+      }
+
+      .price span {
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .price-card ul {
+        margin: 1rem 0 0;
+        padding-left: 1rem;
+        color: var(--muted);
+      }
+
+      .price-card li + li {
+        margin-top: 0.42rem;
+      }
+
+      .price-action {
+        margin-top: 1rem;
+        display: flex;
+        gap: 0.65rem;
+        flex-wrap: wrap;
+      }
+
+      .note {
+        margin-top: 1rem;
+        border: 1px dashed rgba(31, 95, 108, 0.4);
+        border-radius: 12px;
+        padding: 0.8rem;
+        font-size: 0.9rem;
+        color: #2d5d67;
+        background: rgba(217, 238, 242, 0.46);
+      }
+
+      .faq {
+        display: grid;
+        gap: 0.7rem;
+      }
+
+      .faq details {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--card);
+        padding: 0.8rem 0.9rem;
+      }
+
+      .faq summary {
+        font-weight: 700;
+        color: var(--ink);
+        cursor: pointer;
+      }
+
+      .faq p {
+        margin: 0.6rem 0 0;
+        color: var(--muted);
+      }
+
+      .final-cta {
+        padding: 3.2rem 0 4.5rem;
+      }
+
+      .final-box {
+        border-radius: 22px;
+        border: 1px solid rgba(29, 36, 48, 0.08);
+        background:
+          radial-gradient(circle at 15% 25%, rgba(217, 238, 242, 0.9), transparent 45%),
+          radial-gradient(circle at 85% 80%, rgba(255, 220, 168, 0.68), transparent 38%),
+          #fff;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .final-box h2 {
+        font-family: "Fraunces", serif;
+        font-size: clamp(1.7rem, 2.7vw, 2.7rem);
+      }
+
+      .final-box p {
+        color: var(--muted);
+        max-width: 680px;
+        margin: 0.75rem auto 0;
+      }
+
+      .footer {
+        border-top: 1px solid var(--line);
+        padding: 1.2rem 0 2.4rem;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .float-cta {
+        position: fixed;
+        left: 0.75rem;
+        right: 0.75rem;
+        bottom: 0.75rem;
+        display: none;
+        z-index: 60;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      .reveal.on {
+        animation: rise 0.6s ease forwards;
+      }
+
+      @keyframes rise {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid,
+        .grid-3,
+        .roadmap,
+        .price-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .topbar-wrap {
+          min-height: 68px;
+        }
+
+        .hide-mobile {
+          display: none;
+        }
+
+        .float-cta {
+          display: block;
+        }
+
+        body {
+          padding-bottom: 4.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar-wrap">
+        <a class="brand" href="#top">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <span>INEMA.VIP</span>
+        </a>
+        <div class="badge hide-mobile">Turma fundadora com condicao especial</div>
+        <a class="btn btn-primary hide-mobile" href="#planos">Quero entrar agora</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <article class="hero-copy reveal">
+            <p class="kicker">Comunidade premium para lideres e profissionais</p>
+            <h1>Aplique IA no seu negocio sem virar tecnico.</h1>
+            <p>
+              Entre para a INEMA.VIP e tenha direcao pratica para transformar sua carreira,
+              aumentar competitividade e evoluir com seguranca na nova economia digital.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#planos">Ver planos</a>
+              <a class="btn btn-ghost" href="https://inema.vip" target="_blank" rel="noopener noreferrer">Abrir INEMA.VIP</a>
+            </div>
+            <div class="mini-proof">
+              <span>+30 grupos especializados</span>
+              <span>Trilha para iniciantes</span>
+              <span>Acesso rapido e suporte da comunidade</span>
+            </div>
+          </article>
+
+          <aside class="hero-panel reveal">
+            <h2 class="panel-title">O que voce recebe ao entrar</h2>
+            <ul class="panel-list">
+              <li>Roteiro de aprendizado sem perder tempo com conteudo disperso.</li>
+              <li>Curadoria pratica de IA, automacao, prompts e ferramentas de mercado.</li>
+              <li>Networking com pessoas focadas em execucao e resultado real.</li>
+              <li>Apoio para sair da duvida e entrar em acao com consistencia.</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Se voce sente que pode ficar para tras, isso e para voce.</h2>
+            <p>
+              A maioria das pessoas sabe que IA importa, mas trava na hora de aplicar no dia a dia.
+              Aqui voce entra com clareza, foco e uma comunidade ativa para crescer junto.
+            </p>
+          </div>
+          <div class="grid-3">
+            <article class="card pain reveal">
+              <span class="icon p">01</span>
+              <h3>Excesso de informacao</h3>
+              <p>Voce ve muito conteudo, mas falta um caminho objetivo para agir.</p>
+            </article>
+            <article class="card pain reveal">
+              <span class="icon p">02</span>
+              <h3>Falta de tempo para testar tudo</h3>
+              <p>Sem curadoria, voce perde energia com ferramenta errada e pouca evolucao.</p>
+            </article>
+            <article class="card pain reveal">
+              <span class="icon p">03</span>
+              <h3>Medo de ficar irrelevante</h3>
+              <p>O mercado mudou. Quem nao se adapta rapido perde espaco e oportunidade.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Com a INEMA.VIP, voce avanca com metodo.</h2>
+          </div>
+          <div class="grid-3">
+            <article class="card gain reveal">
+              <span class="icon g">A</span>
+              <h3>Trilhas e cursos organizados</h3>
+              <p>Comece com base solida e evolua para temas avancados no seu ritmo.</p>
+            </article>
+            <article class="card gain reveal">
+              <span class="icon g">B</span>
+              <h3>Grupos por tema</h3>
+              <p>Entre em discussoes certas: IA, automacao, dev, criacao, negocios e mais.</p>
+            </article>
+            <article class="card gain reveal">
+              <span class="icon g">C</span>
+              <h3>Comunidade viva</h3>
+              <p>Pergunte, compartilhe, valide ideias e acelere com quem esta no mesmo jogo.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Roteiro de 30 dias para sua virada</h2>
+            <p>Sem promessas irreais. Um caminho simples e executavel para ganhar tracao.</p>
+          </div>
+          <div class="roadmap">
+            <article class="step reveal">
+              <span class="step-num">Semana 1</span>
+              <h3>Diagnostico</h3>
+              <p>Mapeie seu nivel atual e escolha uma trilha inicial com foco em resultado.</p>
+            </article>
+            <article class="step reveal">
+              <span class="step-num">Semana 2</span>
+              <h3>Aplicacao</h3>
+              <p>Use ferramentas e prompts em uma rotina pratica de produtividade.</p>
+            </article>
+            <article class="step reveal">
+              <span class="step-num">Semana 3</span>
+              <h3>Integracao</h3>
+              <p>Conecte IA com seu contexto de negocio, carreira ou projeto atual.</p>
+            </article>
+            <article class="step reveal">
+              <span class="step-num">Semana 4</span>
+              <h3>Escala</h3>
+              <p>Padronize o que funcionou e monte um plano continuo de evolucao.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="pricing" id="planos">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Escolha seu plano de acesso</h2>
+            <p>Entrada simples, sem burocracia. Comece agora e ative seu acesso na comunidade.</p>
+          </div>
+          <div class="price-grid">
+            <article class="price-card reveal">
+              <h3>Plano Mensal</h3>
+              <div class="price">
+                <strong>R$ 35</strong>
+                <span>/mes</span>
+              </div>
+              <ul>
+                <li>Acesso aos grupos e trilhas da comunidade</li>
+                <li>Ideal para quem quer testar com baixo risco</li>
+                <li>Cancelamento quando quiser</li>
+              </ul>
+              <div class="price-action">
+                <a class="btn btn-primary" href="https://inema.vip" target="_blank" rel="noopener noreferrer">Entrar no mensal</a>
+              </div>
+            </article>
+
+            <article class="price-card reco reveal">
+              <span class="tag">Melhor custo</span>
+              <h3>Plano Anual</h3>
+              <div class="price">
+                <strong>R$ 300</strong>
+                <span>/ano</span>
+              </div>
+              <ul>
+                <li>Equivale a R$ 25/mes</li>
+                <li>Economia de R$ 120 no ano</li>
+                <li>Compromisso com evolucao consistente</li>
+              </ul>
+              <div class="price-action">
+                <a class="btn btn-primary" href="mailto:inemapix@gmail.com?subject=Plano%20Anual%20INEMA.VIP">Quero plano anual</a>
+              </div>
+            </article>
+          </div>
+          <p class="note reveal">
+            Garantia de 7 dias. Se nao fizer sentido para voce, pode sair sem dor de cabeca.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Perguntas frequentes</h2>
+          </div>
+          <div class="faq">
+            <details class="reveal">
+              <summary>Preciso ser tecnico para entrar?</summary>
+              <p>Nao. A comunidade foi feita para quem quer aplicar IA de forma pratica, mesmo sem perfil tecnico.</p>
+            </details>
+            <details class="reveal">
+              <summary>Como recebo acesso apos pagamento?</summary>
+              <p>Voce recebe orientacao de entrada e acesso aos grupos ativos da comunidade apos confirmacao.</p>
+            </details>
+            <details class="reveal">
+              <summary>Tem suporte e troca com outras pessoas?</summary>
+              <p>Sim. O foco e comunidade ativa, colaboracao, networking e evolucao continua.</p>
+            </details>
+            <details class="reveal">
+              <summary>Posso cancelar depois?</summary>
+              <p>Sim. O plano mensal pode ser cancelado quando quiser e voce ainda conta com garantia inicial.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <div class="container">
+          <div class="final-box reveal">
+            <h2>Seu proximo nivel profissional comeca agora.</h2>
+            <p>
+              Se voce quer clareza, comunidade e aplicacao real de IA no mundo de hoje, a INEMA.VIP
+              e o lugar para construir essa virada com consistencia.
+            </p>
+            <div class="hero-actions" style="justify-content: center; margin-top: 1.2rem">
+              <a class="btn btn-primary" href="https://inema.vip" target="_blank" rel="noopener noreferrer">Quero ser VIP agora</a>
+              <a class="btn btn-ghost" href="mailto:inemapix@gmail.com?subject=Duvida%20sobre%20INEMA.VIP">Tirar duvida por email</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <strong>INEMA.VIP</strong> - Comunidade premium de aprendizado colaborativo.<br />
+        Contato: <a href="mailto:inemapix@gmail.com">inemapix@gmail.com</a>
+      </div>
+    </footer>
+
+    <div class="float-cta">
+      <a class="btn btn-primary" style="width: 100%" href="#planos">Entrar na INEMA.VIP</a>
+    </div>
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("on");
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
