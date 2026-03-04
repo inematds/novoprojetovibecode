@@ -466,6 +466,103 @@
         color: var(--muted);
       }
 
+      .capture-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .capture-copy,
+      .capture-form {
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: var(--card);
+        padding: 1.4rem;
+        box-shadow: var(--shadow);
+      }
+
+      .capture-copy {
+        background:
+          radial-gradient(circle at 0% 0%, rgba(255, 220, 168, 0.26), transparent 40%),
+          radial-gradient(circle at 100% 100%, rgba(217, 238, 242, 0.34), transparent 42%),
+          var(--card);
+      }
+
+      .capture-copy h2 {
+        margin-top: 0.6rem;
+      }
+
+      .capture-copy p {
+        color: var(--muted);
+      }
+
+      .capture-list {
+        margin: 0.9rem 0 0;
+        padding-left: 1rem;
+        color: var(--muted);
+      }
+
+      .capture-list li + li {
+        margin-top: 0.45rem;
+      }
+
+      .capture-form {
+        display: grid;
+        gap: 0.78rem;
+      }
+
+      .field {
+        display: grid;
+        gap: 0.34rem;
+        font-size: 0.9rem;
+        color: var(--ink);
+        font-weight: 700;
+      }
+
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 0.72rem 0.82rem;
+        font: inherit;
+        font-weight: 500;
+        color: var(--ink);
+        background: #fff;
+      }
+
+      .field textarea {
+        min-height: 86px;
+        resize: vertical;
+      }
+
+      .checkbox-field {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+        font-size: 0.83rem;
+        color: var(--muted);
+      }
+
+      .checkbox-field input {
+        margin-top: 0.16rem;
+      }
+
+      .form-status {
+        margin: 0;
+        min-height: 1.15rem;
+        font-size: 0.9rem;
+      }
+
+      .form-status.success {
+        color: #0f6a42;
+      }
+
+      .form-status.error {
+        color: #9d4118;
+      }
+
       .final-cta {
         padding: 3.2rem 0 4.5rem;
       }
@@ -528,7 +625,8 @@
         .hero-grid,
         .grid-3,
         .roadmap,
-        .price-grid {
+        .price-grid,
+        .capture-grid {
           grid-template-columns: 1fr;
         }
 
@@ -688,6 +786,69 @@
         </div>
       </section>
 
+      <section class="section" id="captacao">
+        <div class="container">
+          <div class="capture-grid">
+            <article class="capture-copy reveal">
+              <p class="kicker">Captacao de clientes</p>
+              <h2>Quer ajuda para escolher o melhor plano?</h2>
+              <p>
+                Preencha em menos de 1 minuto. Nossa equipe usa esse cadastro para entender seu momento
+                e fazer um contato objetivo, sem spam.
+              </p>
+              <ul class="capture-list">
+                <li>Retorno com orientacao pratica e proposta alinhada ao seu objetivo.</li>
+                <li>Registro de interesse para acompanhar sua evolucao comercial.</li>
+                <li>Prioridade para condicoes especiais das proximas turmas.</li>
+              </ul>
+            </article>
+
+            <form class="capture-form reveal" id="lead-capture-form" novalidate>
+              <label class="field" for="lead-full-name">
+                Nome completo
+                <input id="lead-full-name" name="full_name" type="text" required minlength="3" maxlength="120" placeholder="Seu nome" />
+              </label>
+
+              <label class="field" for="lead-whatsapp">
+                WhatsApp
+                <input id="lead-whatsapp" name="whatsapp" type="tel" placeholder="(11) 99999-9999" />
+              </label>
+
+              <label class="field" for="lead-email">
+                Email
+                <input id="lead-email" name="email" type="email" placeholder="voce@email.com" />
+              </label>
+
+              <label class="field" for="lead-interest">
+                Objetivo principal
+                <select id="lead-interest" name="interest" required>
+                  <option value="" selected disabled>Selecione uma opcao</option>
+                  <option value="carreira-com-ia">Acelerar carreira com IA</option>
+                  <option value="negocio-com-ia">Aplicar IA no negocio</option>
+                  <option value="automacao-processos">Automatizar processos</option>
+                  <option value="networking-comunidade">Networking e comunidade</option>
+                </select>
+              </label>
+
+              <label class="field" for="lead-message">
+                Contexto (opcional)
+                <textarea id="lead-message" name="message" placeholder="Conte rapidamente qual desafio voce quer resolver."></textarea>
+              </label>
+
+              <label class="checkbox-field" for="lead-consent">
+                <input id="lead-consent" name="consent_lgpd" type="checkbox" required />
+                <span>Autorizo o uso dos meus dados para contato comercial e acompanhamento, conforme a LGPD.</span>
+              </label>
+
+              <input type="hidden" name="landing_page" value="index.html" />
+
+              <button class="btn btn-primary" type="submit">Quero receber contato</button>
+              <p class="form-status" id="lead-form-status" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+
       <section class="pricing" id="planos">
         <div class="container">
           <div class="section-head reveal">
@@ -788,6 +949,8 @@
       <a class="btn btn-primary" style="width: 100%" href="#planos">Entrar na INEMA.VIP</a>
     </div>
 
+    <script src="lead-capture-config.js"></script>
+
     <script>
       const observer = new IntersectionObserver(
         (entries) => {
@@ -801,6 +964,126 @@
       );
 
       document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+      const leadCaptureConfig = window.LEAD_CAPTURE_CONFIG || {
+        supabaseUrl: "",
+        supabaseAnonKey: ""
+      };
+
+      const leadForm = document.querySelector("#lead-capture-form");
+      const leadStatus = document.querySelector("#lead-form-status");
+
+      const setLeadStatus = (message, status = "") => {
+        if (!leadStatus) {
+          return;
+        }
+
+        leadStatus.textContent = message;
+        leadStatus.classList.remove("error", "success");
+
+        if (status) {
+          leadStatus.classList.add(status);
+        }
+      };
+
+      const normalizePhone = (value) => value.replace(/\D/g, "");
+
+      const getUtmData = () => {
+        const params = new URLSearchParams(window.location.search);
+
+        return {
+          utm_source: params.get("utm_source"),
+          utm_medium: params.get("utm_medium"),
+          utm_campaign: params.get("utm_campaign"),
+          utm_term: params.get("utm_term"),
+          utm_content: params.get("utm_content")
+        };
+      };
+
+      const submitLead = async (payload) => {
+        if (!leadCaptureConfig.supabaseUrl || !leadCaptureConfig.supabaseAnonKey) {
+          throw new Error("Configure window.LEAD_CAPTURE_CONFIG com supabaseUrl e supabaseAnonKey.");
+        }
+
+        const baseUrl = leadCaptureConfig.supabaseUrl.replace(/\/$/, "");
+        const response = await fetch(`${baseUrl}/rest/v1/leads`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            apikey: leadCaptureConfig.supabaseAnonKey,
+            Authorization: `Bearer ${leadCaptureConfig.supabaseAnonKey}`,
+            Prefer: "return=minimal"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(errorText || "Falha ao gravar lead.");
+        }
+      };
+
+      if (leadForm) {
+        leadForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          const formData = new FormData(leadForm);
+          const fullName = String(formData.get("full_name") || "").trim();
+          const email = String(formData.get("email") || "").trim().toLowerCase();
+          const whatsapp = normalizePhone(String(formData.get("whatsapp") || ""));
+          const interest = String(formData.get("interest") || "").trim();
+          const message = String(formData.get("message") || "").trim();
+          const consentLgpd = formData.get("consent_lgpd") === "on";
+          const landingPage = String(formData.get("landing_page") || window.location.pathname);
+
+          if (fullName.length < 3) {
+            setLeadStatus("Informe um nome valido com pelo menos 3 caracteres.", "error");
+            return;
+          }
+
+          if (!email && !whatsapp) {
+            setLeadStatus("Informe pelo menos email ou WhatsApp para contato.", "error");
+            return;
+          }
+
+          if (!interest) {
+            setLeadStatus("Selecione seu objetivo principal.", "error");
+            return;
+          }
+
+          if (!consentLgpd) {
+            setLeadStatus("Voce precisa autorizar o uso dos dados para concluir.", "error");
+            return;
+          }
+
+          const submitButton = leadForm.querySelector('button[type="submit"]');
+          submitButton?.setAttribute("disabled", "true");
+          setLeadStatus("Enviando...", "");
+
+          try {
+            await submitLead({
+              full_name: fullName,
+              email: email || null,
+              whatsapp: whatsapp || null,
+              interest,
+              message: message || null,
+              source: "landing-page-inema",
+              landing_page: landingPage,
+              consent_lgpd: true,
+              consent_at: new Date().toISOString(),
+              ...getUtmData()
+            });
+
+            leadForm.reset();
+            setLeadStatus("Cadastro recebido. Vamos entrar em contato em breve.", "success");
+          } catch (error) {
+            console.error(error);
+            setLeadStatus("Nao foi possivel enviar agora. Tente novamente em alguns minutos.", "error");
+          } finally {
+            submitButton?.removeAttribute("disabled");
+          }
+        });
+      }
     </script>
   </body>
 </html>
